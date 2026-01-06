@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Contacto - Almafuerte{% endblock %}
+
+{% block content %}
+<section class="contactpage-section">
+  <div class="contactpage-container">
+      {% if messages %}
+          <div class="contactpage-alerts">
+            {% for message in messages %}
+              <div class="alert-box {{ message.tags }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          </div>
+      {% endif %}
+    <!-- INFO + FORMULARIO -->
+    <div class="contactpage-top">
+      <!-- Información de contacto -->
+      <div class="contactpage-info">
+        <h2 class="contactpage-title">Contáctanos</h2>
+        <p class="contactpage-text">
+      <a href="https://wa.me/541138632130" target="_blank" class="contact-link">
+        <i class="bi bi-telephone-fill"></i>
+        <strong>Teléfono:</strong> +54 11 3863-2130
+      </a>
+    </p>
+
+
+    <!-- WhatsApp -->
+    <p class="contactpage-text">
+      <a href="mailto:botaswalkerargentina@hotmail.com" class="contact-link">
+        <i class="bi bi-envelope-fill"></i>
+        <strong>Email:</strong> botaswalkerargentina@hotmail.com
+      </a>
+    </p>
+        <p class="contactpage-text">
+      <a href="https://www.google.com/maps?q=Rucci+3182,+Isidro+Casanova,+Buenos+Aires" target="_blank" class="contact-link">
+        <i class="bi bi-geo-alt-fill"></i>
+        <strong>Dirección:</strong>Jose Ignacio Rucci 3182, Isidro Casanova, Buenos Aires
+      </a>
+    </p>
+      </div>
+
+      <!-- Formulario de contacto -->
+      <div class="contactpage-form">
+
+        <!-- ALERTAS (Bootstrap) -->
+        {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} mt-3" role="alert">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+
+        <h4 class="contactpage-title">
+          Escríbanos su consulta en este formulario y nos contactaremos a su correo electrónico.
+        </h4>
+
+        <form method="post" action="." class="contactpage-form-element">
+          {% csrf_token %}
+
+          <div class="contactpage-form-group">
+            <input type="text" id="name" name="name"
+                   class="contactpage-input"
+                   placeholder="Apellido y nombre" required>
+          </div>
+
+          <!-- CAMPO EMAIL AÑADIDO -->
+          <div class="contactpage-form-group">
+            <input type="email" id="email" name="email"
+                   class="contactpage-input"
+                   placeholder="tucorreo@ejemplo.com" required>
+          </div>
+
+          <div class="contactpage-form-group">
+            <input type="text" id="reason" name="reason"
+                   class="contactpage-input"
+                   placeholder="Motivo de la consulta" required>
+          </div>
+
+          <div class="contactpage-form-group">
+            <textarea id="description" name="description" rows="5"
+                      class="contactpage-textarea"
+                      placeholder="Descripción" required></textarea>
+          </div>
+
+          <button type="submit" class="contactpage-btn">Enviar consulta</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- MAPA -->
+    <div class="contactpage-map">
+      <h2 class="contactpage-title">Ubicación</h2>
+      <div class="contactpage-map-container">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3280.122273946562!2d-58.58091662441029!3d-34.70209577291911!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcc66d3c716cff%3A0x447ea3b8405476b2!2sJos%C3%A9%20Ignacio%20Rucci%203182%2C%20B1754EOJ%20Isidro%20Casanova%2C%20Provincia%20de%20Buenos%20Aires!5e0!3m2!1ses!2sar!4v1763157670371!5m2!1ses!2sar"
+          width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock %}

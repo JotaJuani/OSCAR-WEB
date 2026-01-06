@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Inicio - Almafuerte{% endblock %}
+
+{% block content %}
+
+<!-- HERO -->
+<section class="hero">
+  <div class="decor-circle circle1"></div>
+  <div class="decor-circle circle2"></div>
+  <div class="decor-circle circle3"></div>
+  <div class="decor-circle circle4"></div>
+  
+
+
+  <div class="hero-content">
+    <h1>40 Años de Excelencia en Productos Ortopédicos</h1>
+    <p>
+      En <strong>Almafuerte</strong>, con más de cuatro décadas de experiencia en la industria, 
+      desarrollamos y fabricamos soluciones ortopédicas de alta calidad.
+    </p>
+    <a href="" class="btn-primary">Conocé nuestros productos</a>
+  </div>
+</section>
+
+<!-- INFO -->
+<section class="info">
+  <h2>Soluciones Ortopédicas con Respaldo y Confianza</h2>
+  <p class="section-subtitle">En Almafuerte, cada producto se fabrica bajo estrictos controles de calidad y normas sanitarias.</p>
+
+  <div class="info-grid">
+    <div class="info-card">
+      <i class="bi bi-award"></i>
+      <h3>Certificaciones Oficiales</h3>
+      <p>Certificaciones otorgadas por la <strong>ANMAT</strong> y el <strong>Ministerio de Salud</strong>.</p>
+    </div>
+
+    <div class="info-card">
+      <i class="bi bi-gear-wide-connected"></i>
+      <h3>Fábrica Habilitada</h3>
+      <p>Habilitada por la Provincia para fabricar y distribuir productos ortopédicos.</p>
+    </div>
+
+    <div class="info-card">
+      <i class="bi bi-people"></i>
+      <h3>Confianza y Trayectoria</h3>
+      <p>Más de <strong>40 años de experiencia</strong> en innovación y servicio.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTOS DESTACADOS -->
+<section class="cta">
+  <h2>Descubrí nuestra línea completa de productos</h2>
+
+  <div class="product-grid">
+
+    <div class="product-card">
+      <a href="{% url 'product_list_by_category' 'botas-walker' %}" class="full-card-link"></a>
+
+      <img src="{% static 'images/bota_cat1.png' %}" alt="Bota ortopédica" />
+      <div class="product-info">
+        <h3>Botas Walker Ortopédicas</h3>
+        <p>Diseñadas para brindar estabilidad y protección.</p>
+      </div>
+
+      <a href="{% url 'product_list_by_category' 'botas-walker' %}" class="btn-secondary explore-btn">Explorar</a>
+    </div>
+
+    <div class="product-card">
+      <a href="{% url 'product_list_by_category' 'inmovilizador-de-rodilla' %}" class="full-card-link"></a>
+
+      <img src="{% static 'images/inm-rodilla-categoria-prueba.png' %}" alt="Inmovilizador de rodilla" />
+      <div class="product-info">
+        <h3>Inmovilizadores de rodilla</h3>
+        <p>Fabricados con materiales de alta calidad para confort y sujeción precisa.</p>
+      </div>
+
+      <a href="{% url 'product_list_by_category' 'inmovilizador-de-rodilla' %}" class="btn-secondary explore-btn">Explorar</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- COBERTURA -->
+<section class="coverage">
+  <div class="coverage-content">
+    <h2>Fabricación y Distribución en Todo el País</h2>
+    <p>
+      Nos especializamos en la fabricación y distribución de productos en todo el país, garantizando stock permanente y entrega inmediata, con un servicio de envíos confiable y la posibilidad de despachos internacionales.
+    </p>
+  </div>
+  <div class="coverage-map">
+    <img src="{% static 'images/envios_pais2.jpg' %}" alt="Mapa de Argentina" />
+  </div>
+</section>
+
+{% endblock %}

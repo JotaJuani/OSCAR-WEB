@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Almafuerte{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'styles/main.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+    <a href="https://wa.me/5491138632130" 
+      class="whatsapp-float" 
+      target="_blank" 
+      rel="noopener noreferrer">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
+            alt="WhatsApp" class="whatsapp-icon">
+    </a>
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+  <!-- Brand a la izquierda -->
+  <div class="brand"><a href="{% url 'home' %}">Almafuerte</a></div>
+
+  <!-- Nav links (desktop) -->
+  <nav class="nav-links" id="nav-links">
+    <a href="{% url 'home' %}">Inicio</a>
+    <a href="{% url 'all_products_random' %}">Productos</a>
+    <a href="{% url 'about' %}">Nosotros</a>
+    <a href="{% url 'contact' %}">Contacto</a>
+  </nav>
+
+  <!-- Hamburger para móviles a la derecha -->
+  <div class="hamburger" id="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</header>
+
+  <!-- CONTENIDO VARIABLE -->
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+<section class="cta-final">
+    <div class="cta-container">
+      <h2>¿Sos distribuidor o profesional de la salud?</h2>
+      <p>Contactanos para acceder a precios especiales y realizar pedidos mayoristas.</p>
+      <a href="{% url 'contact' %}" class="btn-cta">Solicitar información</a>
+    </div>
+  </section>
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 Almafuerte Fabrica — Todos los derechos reservados</p>
+  </footer>
+  <script>
+    // Selecciona el hamburger y el nav
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('nav-links');
+
+    // Al hacer clic en el hamburger, togglea la clase 'active'
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>

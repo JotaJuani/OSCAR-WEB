@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ product.name }} - Almafuerte{% endblock %}
+
+{% block content %}
+<section class="bp-detail">
+
+  <!-- Fondos decorativos -->
+  <div class="bp-background">
+    <div class="bp-bg-diagonal bp-bg-top"></div>
+    <div class="bp-bg-diagonal bp-bg-bottom"></div>
+  </div>
+
+  <h1 class="bp-title">{{ product.name }}</h1>
+  {% for img in images %}
+  <div class="bp-section bp-sec{{ forloop.counter }}">
+    <div class="bp-circle circle-{{ forloop.counter }}"></div>
+    <div class="bp-image">
+      <img src="{{ img.image.url }}" alt="{{ img.title }}">
+    </div>
+    <div class="bp-text">
+      <h3>{{ img.title }}</h3>
+      <div class="bp-divider"></div>
+      {{ img.description|safe }}
+    </div>
+  </div>
+  {% endfor %}
+
+  {% if product.category.slug == "botas-walker" %}
+    <div class="bp-tech">
+      <h3>Especificación Técnica</h3>
+      <div class="bp-divider"></div>
+      <p>Todos los productos cuentan con <strong>refuerzos en velcro y remaches empavonados</strong>, incorporando un sistema de <strong>punta de anzuelo reforzado</strong> para mayor duración y resistencia.</p>
+    </div>
+  {% elif product.category.slug == "inmovilizador-de-rodilla" %}
+  <div class="bp-tech">
+      <h3>Especificación Técnica</h3>
+      <div class="bp-divider"></div>
+      <p>Todos los productos estan desarrollados con <strong>ballenas de aluminio de máxima calidad</strong>, brindan una estructura sólida y eficiente. Incorporan <strong>pasadores metálicos reforzados</strong> y <strong>velcros de alta durabilidad<strong>, garantizando un rendimiento óptimo ante el uso continuado.</p>
+    </div>
+  {% endif %}
+  <!-- CTA final -->
+  <div class="bp-cta-container">
+    <a href="#" class="bp-cta-button">Consultar +24 unidades</a>
+    <div class="bp-discount">10% OFF</div>
+  </div>
+</section>
+{% endblock %}
