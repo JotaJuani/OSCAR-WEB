@@ -72,6 +72,7 @@ CKEDITOR_5_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
 
+    # WhiteNoise DEBE ir justo después de SecurityMiddleware
     'whitenoise.middleware.WhiteNoiseMiddleware',
 
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -190,3 +191,5 @@ EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
 }
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
