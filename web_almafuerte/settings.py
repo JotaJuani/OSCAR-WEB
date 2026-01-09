@@ -49,26 +49,29 @@ INSTALLED_APPS = [
     
 ]
 CKEDITOR_5_CONFIGS = {
-    'default': {
-        'toolbar': [
-            'heading',
-            '|',
-            'bold',
-            'italic',
-            'underline',
-            '|',
-            'bulletedList',
-            'numberedList',
-            '|',
-            'link',
-            '|',
-            'undo',
-            'redo',
+    "default": {
+        "toolbar": [
+            "heading",
+            "|",
+            "bold",
+            "italic",
+            "underline",
+            "|",
+            "bulletedList",
+            "numberedList",
+            "|",
+            "link",
+            "|",
+            "undo",
+            "redo",
         ],
-    },
+        "height": 300,
+        "width": "100%",
+    }
 }
 
 CKEDITOR_5_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
 
@@ -105,7 +108,7 @@ WSGI_APPLICATION = 'web_almafuerte.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-"""
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
@@ -127,6 +130,7 @@ DATABASES = {
         'PORT': os.environ.get('DB_PORT', '5432'),
     }
 }
+"""
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
@@ -180,7 +184,7 @@ STATICFILES_DIRS = [
 ]
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = "/tmp/media"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
