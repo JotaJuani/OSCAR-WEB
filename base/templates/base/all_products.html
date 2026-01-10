@@ -12,24 +12,26 @@
 
   <div class="product-grid">
     {% for product in products %}
-  <div class="product-card">
-    <a href="{{ product.get_absolute_url }}"></a>
-    {% if product.main_image %}
-      <img src="{{ product.main_image.url }}" alt="{{ product.name }}" class="img-fluid">
-    {% else %}
-      <img src="{% static 'images/placeholder.png' %}" alt="Sin imagen" class="img-fluid">
-    {% endif %}
-    
-    <div class="product-info">
-      <h3>{{ product.name }}</h3>
-      <a href="{{ product.get_absolute_url }}"></a>
-      <p>{{ product.description|truncatechars:100 }}</p>
-      <p><strong>Consultar precio</strong></p>
-    </div>
-    <a href="{{ product.get_absolute_url }}" class="btn-secondary">Ver detalle</a>
-  </div>
-{% endfor %}
+      <div class="product-card">
+
+        {% if product.main_image %}
+          <img src="{{ product.main_image.url }}" alt="{{ product.name }}" class="img-fluid">
+        {% else %}
+          <img src="{% static 'images/placeholder.png' %}" alt="Sin imagen" class="img-fluid">
+        {% endif %}
+
+        <div class="product-info">
+          <h3>{{ product.name }}</h3>
+          <p>{{ product.description|truncatechars:100 }}</p>
+          <p><strong>Consultar precio</strong></p>
+        </div>
+
+        <a href="{{ product.get_absolute_url }}" class="btn-secondary">
+          Ver detalle
+        </a>
+
+      </div>
+    {% endfor %}
   </div>
 </section>
 {% endblock %}
-
