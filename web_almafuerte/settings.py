@@ -33,7 +33,8 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG')
 
-ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
+ALLOWED_HOSTS = env.list("ALLOWED_HOSTS", default=["127.0.0.1", ".railway.app"])
+
 CSRF_TRUSTED_ORIGINS = env.list('CSRF_TRUSTED_ORIGINS', default=[])
 # Application definition
 
@@ -46,8 +47,19 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'base', 
     'django_ckeditor_5',
+    "cloudinary",
+    "cloudinary_storage",
     
 ]
+# Media files
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+
+# Opcional: solo si querés separar las carpetas en Cloudinary
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    "API_KEY": os.environ.get("CLOUDINARY_API_KEY"),
+    "API_SECRET": os.environ.get("CLOUDINARY_API_SECRET"),
+}
 CKEDITOR_5_CONFIGS = {
     "default": {
         "toolbar": [
@@ -108,7 +120,7 @@ WSGI_APPLICATION = 'web_almafuerte.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
-
+"""python manage.py
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
@@ -119,7 +131,7 @@ DATABASES = {
         "PASSWORD": os.environ.get("PGPASSWORD"),
     }
 }
-"""
+
 DATABASES = {
     'default': {
         'ENGINE': os.environ.get('DB_ENGINE', 'django.db.backends.postgresql'),
@@ -131,6 +143,24 @@ DATABASES = {
     }
 }
 """
+if DEBUG:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': os.environ.get('DB_ENGINE', 'django.db.backends.postgresql'),
+            'NAME': os.environ.get('DB_NAME'),
+            'USER': os.environ.get('DB_USER'),
+            'PASSWORD': os.environ.get('DB_PASSWORD'),
+            'HOST': os.environ.get('DB_HOST'),
+            'PORT': os.environ.get('DB_PORT', '5432'),
+        }
+    }
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
@@ -182,10 +212,10 @@ STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
-
+"""
 MEDIA_ROOT = BASE_DIR / "media"
 MEDIA_URL = "/media/"
-
+"""
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
