@@ -14,6 +14,7 @@ from pathlib import Path
 import os 
 from django.contrib.messages import constants as messages
 import environ
+import cloudinary
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -48,8 +49,7 @@ INSTALLED_APPS = [
     'base', 
     'django_ckeditor_5',
     "cloudinary",
-    "cloudinary_storage",
-    
+    "cloudinary_storage",    
 ]
 # Media files
 DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
@@ -60,6 +60,14 @@ CLOUDINARY_STORAGE = {
     "API_KEY": os.environ.get("CLOUDINARY_API_KEY"),
     "API_SECRET": os.environ.get("CLOUDINARY_API_SECRET"),
 }
+
+
+cloudinary.config(
+    cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.environ.get("CLOUDINARY_API_KEY"),
+    api_secret=os.environ.get("CLOUDINARY_API_SECRET"),
+    secure=True,  # 🔥 ESTA LÍNEA ARREGLA TODO
+)
 CKEDITOR_5_CONFIGS = {
     "default": {
         "toolbar": [
