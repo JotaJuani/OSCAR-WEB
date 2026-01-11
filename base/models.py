@@ -42,6 +42,7 @@ class Product(models.Model):
         super().save(*args, **kwargs)
 
 
+
 class ProductImage(models.Model):
     product = models.ForeignKey(
         Product,
